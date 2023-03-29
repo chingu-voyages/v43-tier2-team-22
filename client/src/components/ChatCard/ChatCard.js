@@ -1,8 +1,6 @@
 import React from "react";
 
-const ChatCard = ({ roomNum, activeUser, handleJoin }) => {
-  const exampleImage = ``;
-
+const ChatCard = ({ exampleImage, roomNum, activeUser, handleJoin }) => {
   return (
     <>
       <div className="flex h-36 w-96 rounded-lg	overflow-hidden border-solid border-2 border-black">

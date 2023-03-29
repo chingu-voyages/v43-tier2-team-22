@@ -2,7 +2,7 @@ import "./App.css";
 import React from "react";
 import Login from "./components/Login/Login";
 import NavBar from "./components/navBar/NavBar";
-import ChatCard from "./components/ChatCard";
+import ChatCard from "./components/ChatCard/ChatCard";
 
 const App = () => {
   return (
