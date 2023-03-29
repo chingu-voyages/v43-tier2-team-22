@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+  font-family: "righteous";
+  src: url("assets/fonts/righteous/righteous-regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "inter";
+  src: url("assets/fonts/inter/Inter-VariableFont_slnt\,wght.ttf");
+}
