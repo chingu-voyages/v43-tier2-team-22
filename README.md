@@ -5,3 +5,23 @@
 - Reactjs
 - MobX
 - Nodejs
+
+## Client
+
+```
+cd client
+```
+
+```
+npm run install
+```
+
+## Server
+
+```
+cd server
+```
+
+```
+npm run install
+```
