@@ -16,7 +16,10 @@ const ChatRoomSidebar = () => {
 
   const listItems = rooms.map(room => <ChatCard roomNum={room.id} activeUser={room.activeUser} key={room.id}/>)
   return(
-    <aside>
+    <aside className = "p-4 overflow-y-scroll bg-gray-200 w-fit">
+      <header className="text-xl text-center leading-loose">
+        <h2>Rooms</h2>
+      </header>
       <ul className="flex flex-col gap-4 list-none">
         {listItems}
       </ul>
