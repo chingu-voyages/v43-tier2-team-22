@@ -1,15 +1,27 @@
 import "./App.css";
 import React from "react";
 import Login from "./components/Login/Login";
-import NavBar from "./components/navBar/NavBar";
-import ChatCard from "./components/ChatCard/ChatCard";
-import ChatRoomSidebar from "./components/ChatRoomSidebar/ChatRoomSidebar";
+import Home from "./pages/Home";
+import AuthProvider, { RequireAuth } from "./utils/authProvider";
+
+import { Routes, Route } from "react-router-dom";
 
 const App = () => {
   return (
     <div className="App">
-      <NavBar />
-      <ChatRoomSidebar/>
+      <AuthProvider>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <RequireAuth>
+                <Home />
+              </RequireAuth>
+            }
+          />
+          <Route path="/login" element={<Login />} />
+        </Routes>
+      </AuthProvider>
     </div>
   );
 };
