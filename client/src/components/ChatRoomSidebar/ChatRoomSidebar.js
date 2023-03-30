@@ -1,4 +1,5 @@
 import ChatCard from "../ChatCard/ChatCard"
+import { ImCross } from 'react-icons/im';
 const ChatRoomSidebar = () => {
 
   const rooms = [
@@ -17,6 +18,9 @@ const ChatRoomSidebar = () => {
   const listItems = rooms.map(room => <ChatCard roomNum={room.id} activeUser={room.activeUser} key={room.id}/>)
   return(
     <aside className = "p-4 overflow-y-scroll bg-gray-200 w-fit">
+      <button className="float-right">
+      <ImCross className="hover:cursor-pointer hover:fill-slate-400"/>
+      </button>
       <header className="text-xl text-center leading-loose">
         <h2>Rooms</h2>
       </header>
