@@ -1,20 +1,7 @@
 import ChatCard from "../ChatCard/ChatCard"
 import { ImCross } from 'react-icons/im';
-import { useState } from "react";
-const ChatRoomSidebar = () => {
 
-  const [isOpen, setIsOpen] = useState(true)
-
-  const handleClick = () => {
-    console.log('test')
-    setIsOpen(!isOpen)
-    if (isOpen) {
-      console.log('open')
-    }
-    else {
-      console.log('closed')
-    }
-  }
+const ChatRoomSidebar = ({OpenRooms, isOpenRooms}) => {
 
   const rooms = [
     { id: 1, activeUser: 10 },
@@ -31,8 +18,8 @@ const ChatRoomSidebar = () => {
 
   const listItems = rooms.map(room => <ChatCard roomNum={room.id} activeUser={room.activeUser} key={room.id}/>)
   return(
-    <aside className={`p-4 overflow-y-scroll bg-gray-200 w-fit ${isOpen? 'translate-y-0' : '-translate-x-full'} ease-in-out duration-500`}>
-      <button className="float-right" onClick={handleClick}>
+    <aside className={`p-4 overflow-y-scroll bg-gray-200 w-fit ${isOpenRooms ? 'translate-y-0' : '-translate-x-full'}  ease-in-out duration-500`}>
+      <button className="float-right" onClick={OpenRooms}>
       <ImCross className="hover:cursor-pointer hover:fill-slate-400"/>
       </button>
       <header className="text-xl text-center leading-loose">
