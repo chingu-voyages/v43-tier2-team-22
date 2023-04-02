@@ -14,7 +14,7 @@ export const Home = () => {
     <>
       <NavBar openRooms={openRooms} />
       
-        <ChatRoomSidebar OpenRooms={openRooms} isOpenRooms={isOpenRooms} />
+        <ChatRoomSidebar OpenRooms={openRooms} isOpenRooms={isOpenRooms}/>
         <MessageInputDisplay />
      
     </>
