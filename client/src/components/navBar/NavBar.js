@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ImExit, ImDelicious } from 'react-icons/im';
 import { BsToggleOff, BsToggleOn } from 'react-icons/bs';
 import { useAuth } from '../../utils/authProvider';
@@ -6,6 +6,27 @@ import { useNavigate } from 'react-router-dom';
 
 const NavBar = ({openRooms}) => {
   const [isToggled, setIsToggled] = useState(false);
+  const [theme, setTheme] = useState(null)
+
+  useEffect(()=> {
+    if(window.matchMedia('(prefers-color-scheme: dark)').matches){
+      setTheme("dark");
+    } else {
+      setTheme("light");
+    }
+  }, [])
+
+  useEffect(() => {
+    if (theme === "dark") {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }, [theme])
+
+  const handleThemeSwitch = () => {
+    setTheme(theme === "dark" ? "light" : "dark");
+  }
  
   let auth = useAuth();
   let navigate = useNavigate();
@@ -22,7 +43,7 @@ const NavBar = ({openRooms}) => {
   }
 
   return (
-    <nav className='bg-gray-200 w-screen'>
+    <nav className='bg-gray-200 w-screen dark:bg-slate-800'>
       <div className='container mx-auto py-4 flex justify-around items-center '>
         <div className='flex justify-center items-center gap-3'>
           <button
@@ -31,7 +52,7 @@ const NavBar = ({openRooms}) => {
           >
             <ImDelicious />
           </button>
-          <button onClick={toggle}>
+          <button onClick={()=>{toggle(); handleThemeSwitch()}}>
             {isToggled ? <BsToggleOn /> : <BsToggleOff />}
           </button>
         </div>

@@ -32,7 +32,7 @@ const ChatRoomSidebar = ({OpenRooms, isOpenRooms}) => {
 
   const listItems = rooms.map(room => <ChatCard roomNum={room.id} activeUser={room.activeUser} key={room.id}/>)
   return(
-    <aside  ref={sidebarRef} className={`max-h-screen p-4 overflow-y-scroll bg-gray-200 w-fit ${isOpenRooms ? 'translate-y-0' : '-translate-x-full'}  ease-in-out duration-500 top-16`}>
+    <aside  ref={sidebarRef} className={`max-h-screen p-4 overflow-y-scroll bg-gray-200 w-fit ${isOpenRooms ? 'translate-y-0' : '-translate-x-full'}  ease-in-out duration-500 top-16 dark:bg-slate-600`}>
       <button className="float-right" onClick={OpenRooms}>
       <ImCross className="hover:cursor-pointer hover:fill-slate-400"/>
       </button>
