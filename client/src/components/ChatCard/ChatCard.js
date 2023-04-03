@@ -1,11 +1,20 @@
 import React from "react";
 
 const ChatCard = ({ exampleImage, roomNum, activeUser, handleJoin }) => {
+  // TODO: remove below style later
+  const tempStyle = {
+    minHeight: "100px",
+  };
+
   return (
     <>
-      <div className="flex h-36 w-96 rounded-lg	overflow-hidden border-solid border-2 border-black">
-        <div className="w-3/5 m-6 rounded-lg overflow-hidden">
-          <img className="w-full h-full bg-gray-400	" src={exampleImage} />
+      <div className="flex h-full rounded-lg	overflow-hidden border-solid border-2 border-black">
+        <div className="w-3/5 h-full m-6 rounded-lg overflow-hidden">
+          <img
+            className="w-full h-full bg-gray-400"
+            src={exampleImage}
+            style={tempStyle}
+          />
         </div>
         <div className="flex flex-col justify-around w-2/5 mt-6 mr-6 mb-6">
           <div className="text-right	text-gray-800">Room {roomNum}</div>
