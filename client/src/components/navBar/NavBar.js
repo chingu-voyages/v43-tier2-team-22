@@ -6,7 +6,15 @@ import { useNavigate } from 'react-router-dom';
 
 const NavBar = ({openRooms}) => {
   const [isToggled, setIsToggled] = useState(false);
-  const [theme, setTheme] = useState("light")
+  const [theme, setTheme] = useState(null)
+
+  useEffect(()=> {
+    if(window.matchMedia('(prefers-color-scheme: dark)').matches){
+      setTheme("dark");
+    } else {
+      setTheme("light");
+    }
+  }, [])
 
   useEffect(() => {
     if (theme === "dark") {
