@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
-import NavBar from '../components/navBar/NavBar';
-import ChatRoomSidebar from '../components/ChatRoomSidebar/ChatRoomSidebar';
-import { MessageInputDisplay } from '../components/MessageInputDisplay/MessageInputDisplay';
+import React, { useState } from "react";
+import NavBar from "../components/navBar/NavBar";
+import ChatRoomSidebar from "../components/ChatRoomSidebar/ChatRoomSidebar";
+import ChatRoomUsers from "../components/ChatRoomUsers/ChatRoomUsers";
+import { MessageInputDisplay } from "../components/MessageInputDisplay/MessageInputDisplay";
 
 export const Home = () => {
   const [isOpenRooms, setIsOpenRooms] = useState(true);
@@ -10,13 +11,19 @@ export const Home = () => {
     setIsOpenRooms(!isOpenRooms);
   };
 
+  const [inputMsg, setInputMsg] = useState("");
+
   return (
     <>
       <NavBar openRooms={openRooms} />
-      
-        <ChatRoomSidebar OpenRooms={openRooms} isOpenRooms={isOpenRooms}/>
-        <MessageInputDisplay />
-     
+
+      <div className="flex">
+        <ChatRoomSidebar OpenRooms={openRooms} isOpenRooms={isOpenRooms} />
+        <div className="flex flex-col w-8/12">
+          <ChatRoomUsers />
+          <MessageInputDisplay setInputMsg={setInputMsg} inputMsg={inputMsg} />
+        </div>
+      </div>
     </>
   );
 };
