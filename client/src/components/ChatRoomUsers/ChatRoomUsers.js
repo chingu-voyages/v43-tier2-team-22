@@ -1,7 +1,7 @@
 export default () => {
   return (
     <>
-      <h1>List all other users: </h1>
+      <div className="w-full h-full">List all other users: </div>
     </>
   );
 };

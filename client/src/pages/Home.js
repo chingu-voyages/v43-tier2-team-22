@@ -11,6 +11,8 @@ export const Home = () => {
     setIsOpenRooms(!isOpenRooms);
   };
 
+  const [inputMsg, setInputMsg] = useState("");
+
   return (
     <>
       <NavBar openRooms={openRooms} />
@@ -19,7 +21,7 @@ export const Home = () => {
         <ChatRoomSidebar OpenRooms={openRooms} isOpenRooms={isOpenRooms} />
         <div className="flex flex-col w-8/12">
           <ChatRoomUsers />
-          <MessageInputDisplay />
+          <MessageInputDisplay setInputMsg={setInputMsg} inputMsg={inputMsg} />
         </div>
       </div>
     </>

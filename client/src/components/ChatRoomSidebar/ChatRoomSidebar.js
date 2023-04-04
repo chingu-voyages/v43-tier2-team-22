@@ -25,7 +25,7 @@ const ChatRoomSidebar = ({ OpenRooms, isOpenRooms }) => {
 
   useEffect(() => {
     if (sidebarRef.current) {
-      // sidebarRef.current.style.maxHeight = `calc(100vh - ${navbarHeight}px - 122px)`;
+      sidebarRef.current.style.maxHeight = `calc(100vh - ${navbarHeight}px)`;
     }
   }, [navbarHeight]);
 
