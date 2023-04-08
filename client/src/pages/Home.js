@@ -19,7 +19,9 @@ export const Home = () => {
 
       <div className="flex">
         <ChatRoomSidebar OpenRooms={openRooms} isOpenRooms={isOpenRooms} />
-        <div className="flex flex-col w-8/12">
+        <div
+          className={"flex flex-col " + (!isOpenRooms ? "w-full" : "w-8/12")}
+        >
           <ChatRoomUsers />
           <MessageInputDisplay setInputMsg={setInputMsg} inputMsg={inputMsg} />
         </div>
