@@ -1,8 +1,10 @@
-import React, { useState } from "react";
-import NavBar from "../components/navBar/NavBar";
-import ChatRoomSidebar from "../components/ChatRoomSidebar/ChatRoomSidebar";
-import ChatRoomUsers from "../components/ChatRoomUsers/ChatRoomUsers";
-import { MessageInputDisplay } from "../components/MessageInputDisplay/MessageInputDisplay";
+import React, { useState } from 'react';
+import NavBar from '../components/navBar/NavBar';
+import ChatRoomSidebar from '../components/ChatRoomSidebar/ChatRoomSidebar';
+import { MessageOutput } from '../components/MessageOutput/MessageOutput';
+import { MessageInputDisplay } from '../components/MessageInputDisplay/MessageInputDisplay';
+import io from 'socket.io-client';
+const socket = io.connect('http://localhost:800');
 
 export const Home = () => {
   const [isOpenRooms, setIsOpenRooms] = useState(true);
@@ -11,19 +13,28 @@ export const Home = () => {
     setIsOpenRooms(!isOpenRooms);
   };
 
-  const [inputMsg, setInputMsg] = useState("");
+  const [inputMsg, setInputMsg] = useState('');
+
+  const sendMessage = () => {
+    // socket.emit()
+  };
 
   return (
     <>
       <NavBar openRooms={openRooms} />
-
-      <div className="flex">
-        <ChatRoomSidebar OpenRooms={openRooms} isOpenRooms={isOpenRooms} />
-        <div
-          className={"flex flex-col " + (!isOpenRooms ? "w-full" : "w-8/12")}
-        >
-          <ChatRoomUsers />
-          <MessageInputDisplay setInputMsg={setInputMsg} inputMsg={inputMsg} />
+      <div className={`${isOpenRooms ? "flex" : " "}`}>
+        {isOpenRooms ? (
+          <ChatRoomSidebar OpenRooms={openRooms} isOpenRooms={isOpenRooms} />
+        ) : (
+          ''
+        )}
+        <div className='flex flex-col h-h-nav w-screen'>
+          <MessageOutput fullView={isOpenRooms} />
+          <MessageInputDisplay
+            fullView={isOpenRooms}
+            setInputMsg={setInputMsg}
+            inputMsg={inputMsg}
+          />
         </div>
       </div>
     </>

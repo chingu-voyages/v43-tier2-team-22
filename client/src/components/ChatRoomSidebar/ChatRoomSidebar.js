@@ -2,7 +2,7 @@ import ChatCard from "../ChatCard/ChatCard";
 import { ImCross } from "react-icons/im";
 import { useEffect, useRef, useState } from "react";
 
-const ChatRoomSidebar = ({ OpenRooms, isOpenRooms }) => {
+const ChatRoomSidebar = ({OpenRooms}) => {
   const [navbarHeight, setNavbarHeight] = useState(0);
   const sidebarRef = useRef(null);
 
@@ -35,11 +35,7 @@ const ChatRoomSidebar = ({ OpenRooms, isOpenRooms }) => {
   return (
     <aside
       ref={sidebarRef}
-      className={`max-h-screen p-4 overflow-y-scroll bg-gray-200 ${
-        isOpenRooms ? "translate-y-0" : "-translate-x-full"
-      } ${
-        isOpenRooms ? "w-4/12" : "w-0 p-0"
-      } ease-in-out duration-500 top-16 dark:bg-slate-600`}
+      className='max-h-screen p-4 overflow-y-scroll bg-gray-200 w-3/6 top-16 dark:bg-slate-600'
     >
       <button className="float-right" onClick={OpenRooms}>
         <ImCross className="hover:cursor-pointer hover:fill-slate-400" />
