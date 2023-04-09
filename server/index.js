@@ -13,6 +13,10 @@ const io = new Server(server, {
   }
 });
 
-server.listen(3001, ()=> {
+io.on("connection", (socket)=>{
+  console.log(`User Connected: ${socket.id}`)
+})
+
+server.listen(800, ()=> {
   console.log("SERVER IS RUNNING")
 })

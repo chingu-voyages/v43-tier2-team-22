@@ -43,7 +43,7 @@ const NavBar = ({openRooms}) => {
   }
 
   return (
-    <nav className='bg-gray-200 w-screen dark:bg-slate-800'>
+    <nav className='bg-gray-200  dark:bg-slate-800'>
       <div className='container mx-auto py-4 flex justify-around items-center '>
         <div className='flex justify-center items-center gap-3'>
           <button
