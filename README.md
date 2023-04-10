@@ -28,11 +28,12 @@ TechChat was built using the following technologies:
 To get started with the application, follow these steps:
 
 1. Clone the repository to your local machine
-2. Install dependencies by running `npm install`
-3. Change directory to the `client`directory by running `cd client`
+2. Change directory to the `client`directory by running `cd client`
+3. Install client dependencies by running `npm install`
 4. Start the client by running `npm start` in the client directory
 5. Change directory to the `server` directory by running `cd ../server`
-6. Start the server by running `npm run server` 
+6. Install server dependencies by running `npm install`
+6. Start the server by running `npm start` 
 
 The server will start running on `http://localhost:3000`, and the client will start running on `http://localhost:5000`. Open the client URL in your web browser to start using the chat application.
 
