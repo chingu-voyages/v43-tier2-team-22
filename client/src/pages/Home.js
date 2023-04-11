@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import NavBar from '../components/navBar/NavBar';
 import ChatRoomSidebar from '../components/ChatRoomSidebar/ChatRoomSidebar';
@@ -7,6 +8,16 @@ import io from 'socket.io-client';
 import { useAuth } from '../utils/authProvider';
 const socket = io.connect('http://localhost:800');
 
+
+// let user know they are connected, currently just prints to console but should print to the chat window
+socket.on('connect', () => {
+  console.log('You are connected to the chat!')
+})
+// capture message from server & print this message to all connected clients
+socket.on('received-chat', (message) => { 
+  console.log(`${message}`) 
+})
+
 export const Home = () => {
   const [isOpenRooms, setIsOpenRooms] = useState(true);
   const [msgList, setMsgList] = useState([]);
@@ -15,18 +26,29 @@ export const Home = () => {
     setIsOpenRooms(!isOpenRooms);
   };
 
-  const [inputMsg, setInputMsg] = useState('');
-  const [messageReceived, setMessageReceived] = useState('');
 
-  const handleSubmit = () => {
+
+  const [inputMsg, setInputMsg] = useState("");
+
+  const sendMessage = (newItem) => {
+    socket.emit("chat", `${newItem.name} says: ${newItem.text} at ${newItem.time}`,) // io.emit() - send an event to all connected users (including yourself)
+  };
+
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+
     let newItem = {
       name: (socket.id = auth.user),
       text: inputMsg,
-      time: Date.now(),
+      time: new Date().toISOString(),
     };
 
     socket.emit('send_message', { newItem });
     setMsgList((msgList) => [...msgList, newItem]);
+
+    sendMessage(newItem)
+
   
   };
 
