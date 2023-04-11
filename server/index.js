@@ -14,7 +14,15 @@ const io = new Server(server, {
 });
 
 io.on("connection", (socket)=>{
-  console.log(`User Connected: ${socket.id}`)
+  console.log(`User Connected: ${socket.id}`) // by default socket.io assigns a user to a private room, this id is their room
+
+  socket.on("chat", (inputMsg) => { 
+    io.emit("received-chat", inputMsg )
+  })
+
+  socket.on("disconnect", () => {
+    console.log(`user ${socket.id} disconnected`)
+  })
 })
 
 server.listen(800, ()=> {
