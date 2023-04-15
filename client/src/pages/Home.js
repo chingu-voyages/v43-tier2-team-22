@@ -6,6 +6,7 @@ import { MessageOutput } from '../components/MessageOutput/MessageOutput';
 import { MessageInputDisplay } from '../components/MessageInputDisplay/MessageInputDisplay';
 import io from 'socket.io-client';
 import { useAuth } from '../utils/authProvider';
+import UserList from '../components/UserList/UserList';
 const socket = io.connect('http://localhost:800');
 
 
@@ -55,7 +56,7 @@ export const Home = () => {
   //create another object for the data received and send it to the bubble element to create the other users message
   useEffect(() => {
     socket.on('receive_message', (data) => {
-      setMessageReceived(data.message);
+      //setMessageReceived(data.message);
       console.log(data)
     });
   }, [socket]);
@@ -69,6 +70,7 @@ export const Home = () => {
         ) : (
           ''
         )}
+        
         <div className='flex flex-col h-h-nav w-screen'>
           <MessageOutput
             user={auth.user}
@@ -82,7 +84,14 @@ export const Home = () => {
             handleSubmit={handleSubmit}
           />
         </div>
+        {isOpenRooms ? (
+          <UserList OpenRooms={openRooms} isOpenRooms={isOpenRooms} />
+        ) : (
+          ''
+        )}
+        
       </div>
+      
     </>
   );
 };

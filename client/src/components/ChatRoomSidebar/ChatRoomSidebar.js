@@ -37,10 +37,10 @@ const ChatRoomSidebar = ({OpenRooms}) => {
       ref={sidebarRef}
       className='max-h-screen p-4 overflow-y-scroll bg-gray-200 w-3/6 top-16 dark:bg-slate-600'
     >
-      <button className="float-right" onClick={OpenRooms}>
+      <button className="float-right" title="Close menus" onClick={OpenRooms}>
         <ImCross className="hover:cursor-pointer hover:fill-slate-400" />
       </button>
-      <header className="text-xl text-center leading-loose">
+      <header className="text-xl text-center leading-loose font-semibold">
         <h2>Rooms</h2>
       </header>
       <div className="flex flex-col gap-4 w-full">{listItems}</div>
