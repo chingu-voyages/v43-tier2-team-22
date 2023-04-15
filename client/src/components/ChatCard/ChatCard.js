@@ -17,12 +17,12 @@ const ChatCard = ({ exampleImage, roomNum, activeUser, handleJoin }) => {
           />
         </div>
         <div className="flex flex-col justify-around w-2/5 mt-6 mr-6 mb-6">
-          <div className="text-right	text-gray-800">Room {roomNum}</div>
-          <div className="text-right	text-gray-800">
-            {activeUser} active users
+          <div className="text-right	text-gray-800 dark:text-white font-semibold hover:text-purple-600 dark:hover:text-purple-600 cursor-pointer" >Room {roomNum}</div>
+          <div className="text-right	text-gray-500 dark:text-slate-400 text-sm">
+            {activeUser} active
           </div>
           <div className="rounded-lg overflow-hidden h-9 bg-gray-400 hover:bg-gray-300">
-            <button className="h-full w-full text-white" onClick={handleJoin}>
+            <button className="h-full w-full tracking-wide text-white transition-colors duration-200 transform bg-purple-700 dark:bg-purple-600 rounded-md hover:bg-purple-600 dark:hover:bg-purple-700 focus:outline-none focus:bg-purple-600" onClick={handleJoin}>
               Join
             </button>
           </div>

@@ -47,12 +47,13 @@ const NavBar = ({openRooms}) => {
       <div className='container mx-auto py-4 flex justify-around items-center '>
         <div className='flex justify-center items-center gap-3'>
           <button
+            title="Open menus"
             onClick={openRooms}
             className='flex justify-center items-center transition-colors duration-200 transform rounded-md hover:bg-gray-300 focus:outline-none focus:bg-gray-300'
           >
             <ImDelicious />
           </button>
-          <button onClick={()=>{toggle(); handleThemeSwitch()}}>
+          <button title="Toggle Theme" onClick={()=>{toggle(); handleThemeSwitch()}}>
             {isToggled ? <BsToggleOn /> : <BsToggleOff />}
           </button>
         </div>
