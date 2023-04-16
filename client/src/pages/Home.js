@@ -23,6 +23,7 @@ export const Home = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     socket.emit('chat', { name: auth.user, message: inputMsg });
+    document.getElementById('text-input').value = '';
   };
 
   //create another object for the data received and send it to the bubble element to create the other users message
