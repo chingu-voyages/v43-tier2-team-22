@@ -35,7 +35,7 @@ const ChatRoomSidebar = ({OpenRooms}) => {
   return (
     <aside
       ref={sidebarRef}
-      className='max-h-screen p-4 overflow-y-scroll bg-gray-200 w-3/6 top-16 dark:bg-slate-600'
+      className='max-h-screen max-w-xs min-w-fit p-4 overflow-y-scroll bg-gray-200 w-3/6 top-16 dark:bg-slate-600'
     >
       <button className="float-right" title="Close menus" onClick={OpenRooms}>
         <ImCross className="hover:cursor-pointer hover:fill-slate-400" />

@@ -1,22 +1,24 @@
+import { ImUser, ImAddressBook } from "react-icons/im";
 const UserList = ({user}) => {
 
 const users = [
-  {id: 1, username: 'name'},
-  {id: 2, username: 'name'},
-  {id: 3, username: 'name'},
-  {id: 4, username: 'name'},
-  {id: 5, username: 'name'}
+  {id: 1, username: 'username1'},
+  {id: 2, username: 'username2'},
+  {id: 3, username: 'username3'},
+  {id: 4, username: 'username4'},
+  {id: 5, username: 'username5'}
 ]
 
 const listUsers = users.map((user) => (
-  <li id={user.id} username={user.username} key={user.id} >user</li>
+  
+  <li title={`${user.username}`} className="dark:bg-slate-700 bg-gray-300 p-1 cursor-crosshair rounded"id={user.id} username={user.username} key={user.id}><ImUser className="float-left m-1"/>{user.username}</li>
 ));
 
   return (
     <aside className="flex flex-col justify-between p-4 overflow-y-scroll bg-gray-200 top-16 dark:bg-slate-800 w-1/4 min-w-fit">
       <div>
-      <header className="text-xl font-semibold">
-      <h1>Active Users</h1>
+      <header className="text-xl font-semibold m-2">
+      <h1><ImAddressBook className="float-left m-1"/>Active Users</h1>
       </header>
       <ul className="flex flex-col gap-3 mt-3 w-full">
         {listUsers}
