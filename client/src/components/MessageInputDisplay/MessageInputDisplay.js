@@ -15,6 +15,7 @@ export const MessageInputDisplay = ({
     >
       <input
         type="text"
+        id="text-input"
         placeholder="Type your message here..."
         className="border border-gray-400 p-2 rounded-md w-full mr-2 text-black focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
         onChange={(event) => setInputMsg(event.target.value)}
