@@ -17,9 +17,9 @@ export const Home = () => {
   const [currentRoom, setCurrentRoom] = useState("1"); // current room
   const [rooms, setRooms] = useState([]); // list of allrooms
 
-  // when the user clicks on the join button
+  // when the user clicks on the join button 
   const handleJoinRoom = (room) => {
-    //socket.emit('join', room)
+    socket.emit('join', room)
     console.log("join room: " + room);
   };
   useEffect(() => {

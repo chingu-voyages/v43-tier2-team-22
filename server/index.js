@@ -36,7 +36,7 @@ io.on('connection', (socket) => {
   socket.on('chat', (inputMsg) => {
     io.emit('received-chat', inputMsg);
     //io.to(inputMsg.room).emit('received-chat', inputMsg);
-    //console.log(inputMsg);
+    // console.log(inputMsg);
   });
 
   socket.on('disconnect', () => {

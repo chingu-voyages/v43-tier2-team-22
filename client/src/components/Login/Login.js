@@ -35,7 +35,7 @@ const Login = () => {
               <input
                 placeholder="Type Nickname"
                 type="text"
-                name="username"
+                name="username"autoComplete="off"
                 className=" block w-3/4 px-4 py-2 mt-2 text-purple-700 bg-white border rounded-2xl focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40 text-center"
               />
             </div>
