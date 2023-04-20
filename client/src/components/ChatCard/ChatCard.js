@@ -1,6 +1,6 @@
 import React from "react";
 
-const ChatCard = ({ exampleImage, roomNum, activeUser, handleJoin }) => {
+const ChatCard = ({ exampleImage, roomNum, activeUser, handleJoinRoom, setCurrentRoom }) => {
   // TODO: remove below style later
   const tempStyle = {
     minHeight: "100px",
@@ -22,7 +22,10 @@ const ChatCard = ({ exampleImage, roomNum, activeUser, handleJoin }) => {
             {activeUser} active
           </div>
           <div className="rounded-lg overflow-hidden h-9 bg-gray-400 hover:bg-gray-300">
-            <button className="h-full w-full tracking-wide text-white transition-colors duration-200 transform bg-purple-700 dark:bg-purple-600 rounded-md hover:bg-purple-600 dark:hover:bg-purple-700 focus:outline-none focus:bg-purple-600" onClick={handleJoin}>
+            <button className="h-full w-full tracking-wide text-white transition-colors duration-200 transform bg-purple-700 dark:bg-purple-600 rounded-md hover:bg-purple-600 dark:hover:bg-purple-700 focus:outline-none focus:bg-purple-600" onClick={() => {
+              setCurrentRoom(roomNum)
+              handleJoinRoom(roomNum)
+            }}>
               Join
             </button>
           </div>

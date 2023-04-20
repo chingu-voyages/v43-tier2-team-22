@@ -2,22 +2,22 @@ import ChatCard from "../ChatCard/ChatCard";
 import { ImCross } from "react-icons/im";
 import { useEffect, useRef, useState } from "react";
 
-const ChatRoomSidebar = ({OpenRooms}) => {
+const ChatRoomSidebar = ({OpenRooms, rooms, setCurrentRoom, handleJoinRoom}) => {
   const [navbarHeight, setNavbarHeight] = useState(0);
   const sidebarRef = useRef(null);
 
-  const rooms = [
-    { id: 1, activeUser: 10 },
-    { id: 2, activeUser: 20 },
-    { id: 3, activeUser: 30 },
-    { id: 4, activeUser: 40 },
-    { id: 5, activeUser: 50 },
-    { id: 6, activeUser: 60 },
-    { id: 7, activeUser: 70 },
-    { id: 8, activeUser: 80 },
-    { id: 9, activeUser: 90 },
-    { id: 10, activeUser: 100 },
-  ];
+  // const rooms = [
+  //   { id: 1, activeUser: 10 },
+  //   { id: 2, activeUser: 20 },
+  //   { id: 3, activeUser: 30 },
+  //   { id: 4, activeUser: 40 },
+  //   { id: 5, activeUser: 50 },
+  //   { id: 6, activeUser: 60 },
+  //   { id: 7, activeUser: 70 },
+  //   { id: 8, activeUser: 80 },
+  //   { id: 9, activeUser: 90 },
+  //   { id: 10, activeUser: 100 },
+  // ];
 
   useEffect(() => {
     setNavbarHeight(document.querySelector("nav").clientHeight);
@@ -30,7 +30,7 @@ const ChatRoomSidebar = ({OpenRooms}) => {
   }, [navbarHeight]);
 
   const listItems = rooms.map((room) => (
-    <ChatCard roomNum={room.id} activeUser={room.activeUser} key={room.id} />
+    <ChatCard roomNum={room.id} activeUser={room.activeUser} key={room.id} handleJoinRoom={handleJoinRoom} setCurrentRoom={setCurrentRoom}/>
   ));
   return (
     <aside

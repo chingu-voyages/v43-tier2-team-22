@@ -13,11 +13,30 @@ const io = new Server(server, {
   },
 });
 
+const rooms = [
+  { id: 1, activeUser: 10, messages: [] },
+  { id: 2, activeUser: 10, messages: [] },
+  { id: 3, activeUser: 10, messages: [] }
+];
+
+
 io.on('connection', (socket) => {
-  console.log(`User Connected: ${socket.id}`); // by default socket.io assigns a user to a private room, this id is their room
+  //welcome 
+  console.log(`User Connected: ${socket.id}`);
+  
+  // send list of rooms to client
+  io.emit('roomData', rooms);
+
+
+  // when a client joins a room
+  socket.on('join', room  => {
+    socket.join(room);
+  });
 
   socket.on('chat', (inputMsg) => {
     io.emit('received-chat', inputMsg);
+    //io.to(inputMsg.room).emit('received-chat', inputMsg);
+    //console.log(inputMsg);
   });
 
   socket.on('disconnect', () => {
