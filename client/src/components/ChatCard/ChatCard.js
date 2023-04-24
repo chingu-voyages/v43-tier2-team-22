@@ -11,7 +11,7 @@ const ChatCard = ({ exampleImage, roomNum, activeUser, handleJoin }) => {
       <div className="flex h-full rounded-lg	overflow-hidden border-solid border-2 border-black">
         <div className="w-3/5 h-full m-6 rounded-lg overflow-hidden">
           <img
-            className="w-full h-full bg-gray-400 w-40"
+            className="h-full bg-gray-400 w-40"
             src={exampleImage}
             style={tempStyle}
           />
