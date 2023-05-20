@@ -11,6 +11,8 @@ const socket = io.connect('http://localhost:800');
 export const Home = () => {
   const [isOpenRooms, setIsOpenRooms] = useState(true);
   const [msgList, setMsgList] = useState([]);
+  const [users, setUsers] = useState([]);
+  console.log(users);
 
   let auth = useAuth();
 
@@ -26,10 +28,28 @@ export const Home = () => {
     document.getElementById('text-input').value = '';
   };
 
+  useEffect(() => {
+    socket.emit('user', { id: socket.id, user: auth.user });
+  }, [auth.user]);
+
+
+  const handleUserList = useCallback((updatedUsers) => {
+    setUsers(updatedUsers);
+  }, []);
+
+  useEffect(() => {
+    socket.on('user-list', handleUserList);
+
+    socket.emit('get-user-list');
+
+    return () => {
+      socket.off('user-list', handleUserList);
+    };
+  }, [handleUserList]);
+
   //create another object for the data received and send it to the bubble element to create the other users message
   const handleReceivedChat = useCallback(
     (data) => {
-      console.log(data.name);
       let newItem = {
         name: data.name,
         text: data.message,
@@ -48,6 +68,7 @@ export const Home = () => {
       socket.off('received-chat', handleReceivedChat);
     };
   }, [handleReceivedChat, socket]);
+
 
   return (
     <>
@@ -71,7 +92,11 @@ export const Home = () => {
           />
         </div>
         {isOpenRooms ? (
-          <UserList OpenRooms={openRooms} isOpenRooms={isOpenRooms} />
+          <UserList
+            OpenRooms={openRooms}
+            isOpenRooms={isOpenRooms}
+            user={users}
+          />
         ) : (
           ''
         )}
