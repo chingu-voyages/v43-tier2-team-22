@@ -1,17 +1,13 @@
+import React, {useEffect, useState} from 'react'
 import { ImUser, ImAddressBook } from "react-icons/im";
+
+
+
 const UserList = ({user}) => {
+console.log(user)
+const listUsers = user.map((name) => (
 
-const users = [
-  {id: 1, username: 'username1'},
-  {id: 2, username: 'username2'},
-  {id: 3, username: 'username3'},
-  {id: 4, username: 'username4'},
-  {id: 5, username: 'username5'}
-]
-
-const listUsers = users.map((user) => (
-  
-  <li title={`${user.username}`} className="dark:bg-slate-700 bg-gray-300 p-1 cursor-crosshair rounded"id={user.id} username={user.username} key={user.id}><ImUser className="float-left m-1"/>{user.username}</li>
+  <li className="dark:bg-slate-700 bg-gray-300 p-1 cursor-crosshair rounded float-left m-1" id={name.id} key={name.id}><ImUser />{name.user}</li>
 ));
 
   return (
